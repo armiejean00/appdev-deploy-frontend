@@ -200,7 +200,7 @@ class ItemController extends Controller
             $item->update($request->only('name', 'description', 'category_id', 'location_id', 'datefound', 'status'));
             $item->save();
 
-            return redirect('home')->with('success', 'Item successfully updated.' . $request->image->getClientOriginalExtension());
+            return redirect('home')->with('success', 'Item successfully updated.');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
