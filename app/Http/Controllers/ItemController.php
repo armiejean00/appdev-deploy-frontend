@@ -190,9 +190,9 @@ class ItemController extends Controller
 
             if ($request->hasFile('image')) {
                 $imageName = Str::random(32) . "." . $request->image->getClientOriginalExtension();
-                Storage::disk('public')->put('images/' .  $imageName, file_get_contents($request->image));
-                if (Storage::disk('public')->exists('images/' .  $item->image)) {
-                    Storage::disk('public')->delete('images/' . $item->image);
+                Storage::disk('public')->put($imageName, file_get_contents($request->image));
+                if (Storage::disk('public')->exists($item->image)) {
+                    Storage::disk('public')->delete($item->image);
                 }
                 $item->image = $imageName;
             }
